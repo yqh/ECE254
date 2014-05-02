@@ -1,0 +1,46 @@
+#LaTex generated files
+manual/*.aux
+manual/*.blg
+manual/*.brf
+manual/*.dvi
+manual/*.lof
+manual/*.log
+manual/*.synctex.gz
+manual/*.toc
+
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# files from Keil IDE
+*.axf
+*.crf
+*.d
+*.plg
+*.sct
+*.tra
+*.lnp
+*.dep
+*.__i
+*.lst
+*.map
+**/**/build
+
+
+# backup from from editor
+*.bak
+*~
