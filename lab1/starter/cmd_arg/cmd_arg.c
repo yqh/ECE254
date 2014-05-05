@@ -1,4 +1,5 @@
 /**
+ * @file: ECE254/lab1/starter/cmd_arg/cmd_arg.c
  * @brief: How to pass command line input arguments to main program
  * To execute: <executable> [arg1] [arg2]...[argN] 
  * EXAMPLE: ./cmd_arg.out Hello ECE254 100 200 

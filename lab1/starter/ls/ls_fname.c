@@ -1,5 +1,5 @@
 /**
- * @file: ECE254/LAB0-A/starter/ls/ls_fname.c
+ * @file: ECE254/lab1/starter/ls/ls_fname.c
  * @brief: simple ls command to list file names of a directory 
  * @date: 2014/05/01
  */

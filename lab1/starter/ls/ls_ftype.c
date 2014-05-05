@@ -1,5 +1,5 @@
 /**
- * @file:  ECE254/LAB0-A/starter/ls/ls_ftype.c
+ * @file:  ECE254/lab1/starter/ls/ls_ftype.c
  * @brief: Print the type of file for each command-line argument
  * @author: W. Richard Stevens, Advanced Programming in the UNIX Environment
  * @date: 2014/05/01

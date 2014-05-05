@@ -1,6 +1,5 @@
 
-# Makefile
-# ECE254 LAB0-A
+# ECE254/lab1/starter/ls/Makefile
 # Y. Huang, 2015/05/01
 
 CC=gcc

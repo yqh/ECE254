@@ -1,7 +1,6 @@
 /**
- * @file:  ECE254/LAB0-A/starter/ls/ls_fperm.c
+ * @file:  ECE254/lab1/starter/ls/ls_fperm.c
  * @brief: Print owner permission of file for each command-line argument
- * @author:yqhuang@uwaterloo.ca 
  * @date: 2014/05/01
  * NOTES: limitation -> does not detect sticky bit setting 
  */
@@ -15,7 +14,7 @@
 int main(int argc, char *argv[])
 {
 	int i;
-	char str[] = "---";
+	char str[] = "---\0";
 	struct stat buf;
 
 	if (argc == 1) {

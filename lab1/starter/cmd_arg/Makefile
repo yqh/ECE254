@@ -1,6 +1,5 @@
-# Makefile
-# ECE254 LAB0-A
-# Y. Huang, 2014/05/01
+# ECE254/lab1/starter/cmd_arg/Makefile
+# 2014/05/01
 
 CC=gcc
 CFLAGS=-Wall -g
