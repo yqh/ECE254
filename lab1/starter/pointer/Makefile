@@ -1,6 +1,6 @@
 
-# Makefile, OS lab0-A
-# Irene Huang, 2013/05/05
+# ECE254/lab1/starter/pointer/Makefile
+# 2014/05/05
 
 CC=gcc
 CFLAGS=-Wall -g
