@@ -1,6 +1,6 @@
 /**
- * @file:  ECE254/lab1/starter/cmd_arg/pointer.c
- * @brief: To demonstrate C structure and pointer usage
+ * @file:  ECE254/lab1/starter/pointer/pointer.c
+ * @brief: To demonstrate C structure and pointer usage 
  * @date:  2014/05/04
  */
 #include <stdio.h>
@@ -24,37 +24,37 @@ int main(void)
 
 	/* First method: set the value of a point structure through a struct variable*/
 	a_point.x = 0;
-	a_point.y = 0;
+	a_point.y = 1;
 	/* Use debugger: we can see the following are true: 
 	   a_point.x == 0;
 	   ptr->x    == 0;
 
-	   a_point.y == 0; 
-	   ptr->y    == 0.
+	   a_point.y == 1; 
+	   ptr->y    == 1.
 	*/
 
 
 	/* Second method: set the value of a point structure through a pointer */
 	ptr->x = 3;
-	ptr->y = 3;
+	ptr->y = 4;
 	/* Use debugger: we can see the following are true: 
 	   a_point.x == 3;
 	   ptr->x    == 3;
 
-	   a_point.y == 3; 
-	   ptr->y    == 3.
+	   a_point.y == 4; 
+	   ptr->y    == 4.
 	*/
 
 	/* Third method: set the value of a point structure by deferencing a pointer */
 	(*ptr).x = 5;
-	(*ptr).y = 5;
+	(*ptr).y = 6;
 
 	/* Use debugger: we can see the following are true: 
-	 * a_point.x == 5;
-	 * ptr->x    == 5;
-	 *
-	 * a_point.y == 5; 
-	 * ptr->y    == 5.
+	   a_point.x == 5;
+	   ptr->x    == 5;
+	  
+	   a_point.y == 6; 
+	   ptr->y    == 6.
 	*/
 
 	/* Switch the ptr to memory dynamically allocated from heap */
@@ -62,20 +62,20 @@ int main(void)
 
 
 	/* 
-	 *  Assign new value to the new point 
-	 *  NOTE that ptr no longer points to a_point!
-	 */
+	    Assign new value to the new point 
+	    NOTE that ptr no longer points to a_point!
+	*/
 	ptr->x = 10;
-	ptr->y = 10;
+	ptr->y = 11; 
 
 	/* 
-	 * Use debugger: we can see the following are true: 
-	 * a_point.x == 5 ;
-	 * ptr->x    == 10;
-	 *
-	 * a_point.y == 5 ;
-	 * ptr->y    == 10.
-	 */
+	   Use debugger: we can see the following are true: 
+	   a_point.x == 5 ;
+	   ptr->x    == 10;
+	  
+	   a_point.y == 6 ;
+	   ptr->y    == 11.
+	*/
 
 	free(ptr);
 
