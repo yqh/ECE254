@@ -1,0 +1,3 @@
+Output "Hello World!" to the first serial port on MCB1700 boards.
+Note under the similator, the first serial port is labeld as UART#1.
+On the actual hardware, the first serial port is the COM0 port on the MCB1700 board.
