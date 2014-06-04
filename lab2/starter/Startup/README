@@ -1,0 +1,11 @@
+This directory contains some frequently used source code.
+
+Retarget.c:        the code to retarget low-level I/O functions used by printf
+                   so that printf will output through serial port COM0.
+RTX_Conf_CM.c:     the RTX configulation file for Cortex-M processors.
+startup_LPC17xx.s: assembly file for LPC17xx microcontroller where vector.
+                   CMSIS vector table and ISR names are defined.
+system_LPC17xx.c:  CMSIS C structures for peripherals on LPC17xx micorcontroller.
+uart_polling.c:    initializing, reading from and writing to UART by polling.
+uart_polling.h:    the header file for accessing functions in uart_polling.c
+			
