@@ -1,0 +1,6 @@
+1 is consumed
+9 is consumed
+25 is consumed
+33 is consumed
+time to initialize system: S1 seconds
+time to transmit data: S2 seconds
