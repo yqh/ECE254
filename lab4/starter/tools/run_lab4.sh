@@ -19,8 +19,8 @@
 #  random num 2
 #  ...
 #  random num N
-#  time to initialize system: S1 seconds
-#  time to transmit data: S2 seconds
+#  Time to initialize system: S1 seconds
+#  Time to transmit data: S2 seconds
 #  -------------------------------------------
 #  The script reads the last two lines where the timing info is and
 #  then extract the S1 and S2 and output "S1 S2" in a line in the 
