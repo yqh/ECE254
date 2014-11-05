@@ -57,8 +57,6 @@ int main(int argc, char *argv[])
 
 	signal(SIGINT, sig_handler);	/* install Ctl-C signal handler */
 
-	srand(time(0));
-
 	while (g_continue) {
 		struct point pt;
 		struct timespec ts = {time(0) + 5, 0};
