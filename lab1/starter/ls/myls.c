@@ -14,16 +14,15 @@
 int main(int argc, char *argv[])
 {
 	int i;
-	char str[] = "---------\0";
+	char str[] = "----------\0";
 	struct stat buf;
 
-	if (argc == 1) {
-		printf("Usage: %s <filename>\n", argv[0]);
-		exit(0);
-	}
+        for (i = 1; i < argc; i++) {
+                if (lstat(argv[i], &buf) < 0) {
+                        perror("lstat error");
+                        continue;
+                }   
 
-	for (i = 1; i < argc; i++) {
-		printf("Owner permission of %s: ", argv[i]);
 		if (lstat(argv[i], &buf) < 0) {
 			perror("lstat error");
 			continue;
@@ -31,15 +30,21 @@ int main(int argc, char *argv[])
 
 		mode_t mode = buf.st_mode;
 
-		str[0] = (mode & S_IRUSR) ? 'r' : '-';
-		str[1] = (mode & S_IWUSR) ? 'w' : '-';
-		str[2] = (mode & S_IXUSR) ? 'x' : '-';	// assume no sticky bit
-		str[3] = (mode & S_IRGRP) ? 'r' : '-'; 
-		str[4] = (mode & S_IWGRP) ? 'w' : '-'; 
-		str[5] = (mode & S_IXGRP) ? 'x' : '-';
-		str[6] = (mode & S_IROTH) ? 'r' : '-'; 
-		str[7] = (mode & S_IWOTH) ? 'w' : '-'; 
-		str[8] = (mode & S_IXOTH) ? 'x' : '-';
+                if      (S_ISREG(mode))  str[0] = '-';
+                else if (S_ISDIR(mode))  str[0] = 'd';
+#ifdef S_ISLNK
+                else if (S_ISLNK(mode))  str[0] = 'l';
+#endif
+                else                     str[0] = '?';
+		str[1] = (mode & S_IRUSR) ? 'r' : '-';
+		str[2] = (mode & S_IWUSR) ? 'w' : '-';
+		str[3] = (mode & S_IXUSR) ? 'x' : '-';	// assume no sticky bit
+		str[4] = (mode & S_IRGRP) ? 'r' : '-'; 
+		str[5] = (mode & S_IWGRP) ? 'w' : '-'; 
+		str[6] = (mode & S_IXGRP) ? 'x' : '-';
+		str[7] = (mode & S_IROTH) ? 'r' : '-'; 
+		str[8] = (mode & S_IWOTH) ? 'w' : '-'; 
+		str[9] = (mode & S_IXOTH) ? 'x' : '-';
 
 		printf("%s\n", str);
 	}
