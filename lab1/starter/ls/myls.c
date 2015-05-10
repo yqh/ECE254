@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
                 	else if (S_ISLNK(mode)) {
 				type = 'l';
 
-				//Adapted from http://linux.die.net/man/2/readlink
+				// Modified from http://linux.die.net/man/2/readlink
 				char *str_link_path = malloc(buf.st_size + 1);
 				ssize_t link_byte_size = readlink(str_abs_path, str_link_path, buf.st_size + 1);
 
@@ -93,7 +93,10 @@ int main(int argc, char *argv[])
 			perms[6] = (mode & S_IROTH) ? 'r' : '-'; 
 			perms[7] = (mode & S_IWOTH) ? 'w' : '-'; 
 			perms[8] = (mode & S_IXOTH) ? 'x' : '-';
-			printf("%c%s %s\n", type, perms, str_rel_path);
+				
+			char *user_name = getpwuid(buf.st_uid)->pw_name;
+			char *group_name = getgrgid(buf.st_gid)->gr_name;
+			printf("%c%s %s %s %s\n", type, perms, user_name, group_name, str_rel_path);
                 }
         }
 	return 0;
