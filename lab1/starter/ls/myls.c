@@ -96,7 +96,10 @@ int main(int argc, char *argv[])
 				
 			char *user_name = getpwuid(buf.st_uid)->pw_name;
 			char *group_name = getgrgid(buf.st_gid)->gr_name;
-			printf("%c%s %s %s %s\n", type, perms, user_name, group_name, str_rel_path);
+
+			int byte_size = buf.st_size;
+
+			printf("%c%s %s %s %i %s\n", type, perms, user_name, group_name, byte_size, str_rel_path);
                 }
         }
 	return 0;
