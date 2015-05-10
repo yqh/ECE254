@@ -6,6 +6,7 @@
  */
 
 #include <sys/types.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -32,13 +33,17 @@ int main(int argc, char *argv[])
         }
 
         while ((p_dirent = readdir(p_dir)) != NULL) {
-                char *str_path = p_dirent->d_name;      // relative path name!
+                char *str_rel_path = p_dirent->d_name;      // relative path name!
+		char *str_abs_path = malloc(strlen(argv[1]) + strlen(str_rel_path) + 1);
+		strcpy(str_abs_path, argv[1]);
+		strcat(str_abs_path, "/");
+		strcat(str_abs_path, str_rel_path);
 		//TODO: better error handling needed
-               	if (str_path == NULL) {
+               	if (str_rel_path == NULL) {
               		printf("Null pointer found!");
                         exit(2);
                	} else {
-			if (lstat(str_path, &buf) < 0) {
+			if (lstat(str_abs_path, &buf) < 0) {
                         	perror("lstat error");
                         	continue;
                		}
@@ -59,7 +64,7 @@ int main(int argc, char *argv[])
 			perms[6] = (mode & S_IROTH) ? 'r' : '-'; 
 			perms[7] = (mode & S_IWOTH) ? 'w' : '-'; 
 			perms[8] = (mode & S_IXOTH) ? 'x' : '-';
-			printf("%c%s %s\n", type, perms, str_path);
+			printf("%c%s %s\n", type, perms, str_rel_path);
                 }
         }
 	return 0;
