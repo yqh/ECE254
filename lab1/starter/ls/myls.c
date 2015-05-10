@@ -47,14 +47,43 @@ int main(int argc, char *argv[])
                         	perror("lstat error");
                         	continue;
                		}
+
                         mode_t mode = buf.st_mode;
 
-               		if      (S_ISREG(mode))  type = '-';
-                	else if (S_ISDIR(mode))  type = 'd';
+               		if (S_ISREG(mode)) {
+				type = '-';
+			}
+                	else if (S_ISDIR(mode)) {
+				type = 'd';
+			}
 #ifdef S_ISLNK
-                	else if (S_ISLNK(mode))  type = 'l';
+                	else if (S_ISLNK(mode)) {
+				type = 'l';
+
+				//Adapted from http://linux.die.net/man/2/readlink
+				char *str_link_path = malloc(buf.st_size + 1);
+				ssize_t link_byte_size = readlink(str_abs_path, str_link_path, buf.st_size + 1);
+
+  				if (link_byte_size < 0) {
+        				perror("lstat");
+        				continue;
+    				}
+
+   				if (link_byte_size > buf.st_size) {
+        				fprintf(stderr, "symlink increased in size "
+                        			"between lstat() and readlink()\n");
+        				continue;
+    				}
+
+   				str_link_path[buf.st_size] = '\0';
+				strcat(str_rel_path, " -> ");
+				strcat(str_rel_path, str_link_path);
+			}
 #endif
-                	else                     type = '?';
+                	else {
+				type = '?';
+			}
+
 			perms[0] = (mode & S_IRUSR) ? 'r' : '-';
 			perms[1] = (mode & S_IWUSR) ? 'w' : '-';
 			perms[2] = (mode & S_IXUSR) ? 'x' : '-';	// assume no sticky bit
