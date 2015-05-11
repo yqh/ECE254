@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
         while ((p_dirent = readdir(p_dir)) != NULL) {
                 char *str_rel_path = p_dirent->d_name;      // relative path name!
-		char *str_abs_path = malloc(strlen(argv[1]) + strlen(str_rel_path) + 1);
+		char *str_abs_path = malloc(strlen(argv[1]) + strlen("/") + strlen(str_rel_path) + 1);
 		strcpy(str_abs_path, argv[1]);
 		strcat(str_abs_path, "/");
 		strcat(str_abs_path, str_rel_path);
