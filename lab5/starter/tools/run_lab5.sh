@@ -6,7 +6,7 @@
 # Usage      : Name your producer executable as "produce" and put it in the
 #              same directory where you put this shell script.
 #              Type
-#              ./run_lab5.sh 
+#              sh run_lab5.sh or bash run_lab5.sh
 #             
 # Course Name: ECE254 Operating Systems and System Programming
 # Description: Lab5 utility - extracting timing info.
