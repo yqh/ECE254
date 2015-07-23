@@ -62,7 +62,7 @@ exec_producer ()
 	while [ ${x} -le ${X_TIMES} ]
 	do
 		cmd="${PROGRAM} ${NUM2PRODUCE} ${BUFFER_SIZE} ${NUM_P} ${NUM_C}"
-		str=`$cmd | tail -1 | awk -F: '{print $2}' | awk '{print $1}'`
+		str=`$cmd | grep -i "System Execution Time" | awk -F: '{print $2}' | awk '{print $1}'`
 		echo $str  >> ${O_FILE}
 		x=`expr $x + 1`
 	done
