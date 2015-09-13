@@ -5,7 +5,7 @@ Assuming you follow the timing data output format as specified in the run_pc.sh 
 then the first column is the system execution time. 
 
 The run_pc.sh then generate the average time and standard deviation of average time tables from the .dat files. 
-The four tables generated are:
+The two tables generated are:
 tb1_$$.txt, which contains the average system execution time;
 tb2_$$.txt, which contains the standard deviation of the system execution time;
 where $$ is the PID of the process that executes the run_pc.sh script.

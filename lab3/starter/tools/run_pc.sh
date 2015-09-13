@@ -22,7 +22,7 @@
 #  The script reads the last line where the timing info is and
 #  then extract the S and output to a file. 
 #  The outputfile naming convention is: N*_B*_P*_C*.dat.
-#  The script then compute for tables.
+#  The script then compute two tables:
 #  tb1_$$.txt: average system execution time
 #  tb2_$$.txt: standard deviation of system execution time
 #  where $$ is the pid of process that executing this shell script.
