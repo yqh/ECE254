@@ -1,4 +1,4 @@
-# ECE254 lab4 Linux Port
+# ECE254 Lab Linux Port
 # Makefile: build time.out to show how to use gettimeofday
 
 CC=gcc

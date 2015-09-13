@@ -1,15 +1,15 @@
 #!/bin/sh 
 ############################################################################
-# File Name  : run_lab5.sh
-# Date       : July 3rd 2014
+# File Name  : run_pc.sh
+# Date       : 2015/09/13
 # Author     : Yiqing Huang 
 # Usage      : Name your producer executable as "produce" and put it in the
 #              same directory where you put this shell script.
 #              Type
-#              ./run_lab5.sh 
+#              ./run_pc.sh 
 #             
 # Course Name: ECE254 Operating Systems and System Programming
-# Description: Lab5 utility - extracting timing info.
+# Description: Lab porject utility - extracting timing info.
 #              The script assumes the following output format at stdout
 #              from the producer process.
 #  -------------------------------------------

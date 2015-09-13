@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Lab3 Starter SIM</TargetName>
+      <TargetName>Starter SIM</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -427,9 +427,9 @@
           <GroupName>Source Code</GroupName>
           <Files>
             <File>
-              <FileName>lab3_main.c</FileName>
+              <FileName>main_task_exp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\lab3_main.c</FilePath>
+              <FilePath>.\src\main_task_exp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -447,9 +447,9 @@
           <GroupName>Doc</GroupName>
           <Files>
             <File>
-              <FileName>lab3_test_spec.txt</FileName>
+              <FileName>Test_spec.txt</FileName>
               <FileType>5</FileType>
-              <FilePath>.\lab3_test_spec.txt</FilePath>
+              <FilePath>.\Test_spec.txt</FilePath>
             </File>
           </Files>
         </Group>

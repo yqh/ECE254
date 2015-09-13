@@ -1,5 +1,5 @@
 /**
- * @file:   code/lab4/mqueue/sender.c
+ * @file:   sender.c
  * @brief:  send random points to a POSIX queue. Type 'q' to terminate. 
  * @date:   2014/06/25
  * NOTES:

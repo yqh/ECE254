@@ -1,4 +1,4 @@
-SET PATH=C:\opt\Keilv460\ARM\ARMCC\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\ThinkPad\Bluetooth Software\syswow64;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell
+SET PATH=C:\opt\Keilv460\ARM\ARMCC\bin\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\ThinkPad\Bluetooth Software\syswow64;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell
 SET CPU_TYPE=Cortex-M3
 SET CPU_VENDOR=ARM
 SET UV2_TARGET=CM3_LE

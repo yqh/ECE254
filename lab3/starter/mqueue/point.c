@@ -1,7 +1,7 @@
 /**
- * @file:   code/lab4/point.c
+ * @file:   point.c
  * @brief:  a point in 2D space  
- * @date:   2014/06/25
+ * @date:   2015/09/12
  */
 
 #include "point.h"

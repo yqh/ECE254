@@ -1,7 +1,7 @@
 /**
- * @brief: ECE254 lab3 starter file that calls os_tsk_get()
- * @file: lab3_main.c
- * @date: 2014/05/28
+ * @brief: ECE254 Keil ARM RL-RTX Task Management Lab starter file that calls os_tsk_get()
+ * @file: main_task_exp.c
+ * @date: 2015/09/13
  */
 /* NOTE: This release is for students to use */
 

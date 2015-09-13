@@ -1,7 +1,7 @@
 /**
- * @file:   code/lab4/mqueue/point.h
+ * @file:   point.h
  * @brief:  header file for modeling a point in a 2D space
- * @date:   2014/06/25
+ * @date:   2015/09/13
  */
 
 #ifndef POINT_H_

@@ -1,7 +1,7 @@
 /**
- * @file:   code/lab4/mqueue/receiver.c
+ * @file:   receiver.c
  * @brief:  receive a message from POSIX queue. Typle Ctrl-C to quit 
- * @date:   2014/06/25
+ * @date:   2015/09/12
  * NOTES:
  * To execute: <executable> <arg1>, where arg1 is a posix queue name.
  * EXAMPLE: ./receiver.out /mailbox1_userid 
