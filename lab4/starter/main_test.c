@@ -19,16 +19,25 @@ int main(int argc, char *argv[])
 {
 
 	int num = 0;
-	void *p;
+	void *p, *q;
 
-	memory_init(1024, BEST_FIT);	// initizae 1KB, best fit
+	best_fit_memory_init(1024);	// initizae 1KB, best fit
 
 	p = best_fit_alloc(8);		// allocate 8B
 	printf("p=%p\n", p);
 	if ( p != NULL ) {
-		dealloc(p);	
+		best_fit_dealloc(p);	
 	}
-	num = count_extfrag();
+	num = best_fit_count_extfrag(4);
+
+	worst_fit_memory_init(1024);	// initizae 1KB, worst fit
+
+	q = worst_fit_alloc(8);		// allocate 8B
+	printf("q=%p\n", q);
+	if ( q != NULL ) {
+		best_fit_dealloc(q);	
+	}
+	num = worst_fit_count_extfrag(4);
 
 	return 0;
 }

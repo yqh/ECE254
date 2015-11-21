@@ -2,7 +2,7 @@
  * @file memory.c
  * @brief: ECE254 Lab: memory allocation algorithm comparison template file
  * @author: 
- * @date: 2015-11-06
+ * @date: 2015-11-20
  */
 
 /* includes */
@@ -12,13 +12,13 @@
 
 /* defines */
 
-/* Global varaiables */
+/* global varaiables */
 
 
 /* Functions */
 
 /* memory initializer */
-int memory_init(size_t size, int algorithm)
+int best_fit_memory_init(size_t size)
 {
 
 	// To be completed by students
@@ -27,7 +27,16 @@ int memory_init(size_t size, int algorithm)
 
 }
 
+int worst_fit_memory_init(size_t size)
+{
 
+	// To be completed by students
+	// You call malloc once here to obtain the memory to be managed.
+	return 0;
+
+}
+
+/* memory allocators */
 void *best_fit_alloc(size_t size)
 {
 	// To be completed by students
@@ -42,7 +51,14 @@ void *worst_fit_alloc(size_t size)
 }
 
 /* memory de-allocator */
-void dealloc(void *bp) 
+void best_fit_dealloc(void *ptr) 
+{
+
+	// To be completed by students
+	return;
+}
+
+void worst_fit_dealloc(void *ptr) 
 {
 
 	// To be completed by students
@@ -51,10 +67,15 @@ void dealloc(void *bp)
 
 /* memory algorithm metric utility function(s) */
 
-/* count how many contiguous bytes are less than 32B */ 
-int count_extfrag(void)
+/* count how many free blocks are less than the input size */ 
+int best_fit_count_extfrag(size_t size)
 {
 	// To be completed by students
 	return 0;
 }
 
+int worst_fit_count_extfrag(size_t size)
+{
+	// To be completed by students
+	return 0;
+}
