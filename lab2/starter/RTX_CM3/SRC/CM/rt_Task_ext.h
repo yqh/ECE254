@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------
- *      ECE254 Lab3
+ *      ECE254 Lab Task Management
  *----------------------------------------------------------------------------
  *      Name:    RT_TASK_EXT.H
  *      Purpose: Header file for extended task management  
@@ -11,7 +11,7 @@
 /* Definitions */
 
 /* Structures */
-/* added in ECE254 lab3 keil_proc, better to put in a separate file. */
+/* added in ECE254 lab keil_proc, better to put in a separate file. */
 typedef struct rl_task_info {
   U8     state;                   /* Task state                              */
   U8     prio;                    /* Execution priority                      */
@@ -24,10 +24,10 @@ typedef struct rl_task_info {
 
 /* Functions */
 
-/* added in ECE254 lab2 keil_proc */
+/* added in ECE254 lab keil_rtx */
 extern int rt_tsk_count_get(void);
 
-/* added in ECE254 lab3 keil_proc */
+/* added in ECE254 lab keil_proc */
 extern OS_RESULT rt_tsk_get(OS_TID task_id, RL_TASK_INFO *p_task_info);
 
 

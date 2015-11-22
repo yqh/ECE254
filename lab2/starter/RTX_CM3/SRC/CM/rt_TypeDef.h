@@ -8,7 +8,7 @@
  *      This code is part of the RealView Run-Time Library.
  *      Copyright (c) 2004-2012 KEIL - An ARM Company. All rights reserved.
  *
- *      NOTE: This file has been modified to complete ECE254 Lab3
+ *      NOTE: This file has been modified to complete ECE254 Lab
  *---------------------------------------------------------------------------*/
 
 /* Types */
@@ -44,10 +44,10 @@ typedef struct OS_TCB {
   U16    waits;                   /* Wait flags                              */
   void   **msg;                   /* Direct message passing when task waits  */
 
-  /* Start: ECE254 Changes by Lab Staff*/
-  /* The following variable type is changed from U8 to U32 for ECE254 Lab3   */
+  /* Start: ECE254 Changes by Lab Staff */
+  /* The following variable type is changed from U8 to U32 for ECE254 Lab    */
   U32    ret_val;                 /* Return value upon completion of a wait  */
-  /* End: ECE254 Changes by Lab Staff*/
+  /* End: ECE254 Changes by Lab Staff */
                                   
   /* Hardware dependant part: specific for CM processor                      */
   U8     ret_upd;                 /* Updated return value                    */
@@ -60,11 +60,11 @@ typedef struct OS_TCB {
 } *P_TCB;
 #define TCB_RETVAL      32        /* 'ret_val' offset                        */
 
-/* Start: ECE254 Changes by Lab Staff*/
-/* The following two macros are modifed from the original in ECE254 Lab3     */ 
+/* Start: ECE254 Changes by Lab Staff */
+/* The following two macros are modifed from the original in ECE254 Lab      */ 
 #define TCB_RETUPD      36        /* 'ret_upd' offset, original = 33         */
 #define TCB_TSTACK      40        /* 'tsk_stack' offset, original = 36       */
-/* END: ECE254 Changes by Lab Staff*/
+/* END: ECE254 Changes by Lab Staff */
 
 
 typedef struct OS_PSFE {          /* Post Service Fifo Entry                 */
