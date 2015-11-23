@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------
- *      ECE254 Lab3
+ *      ECE254 Lab Task Management
  *----------------------------------------------------------------------------
  *      Name:    RT_MEMBOX_ext.C
  *      Purpose: Interface functions for blocking 
@@ -19,10 +19,10 @@
 #include "rt_System.h"
 #include "rt_MemBox.h"
 #include "rt_HAL_CM.h"
-#include "rt_Task.h"       /* added in ECE254 lab3 keil_proc */ 
-#include "rt_MemBox_ext.h" /* added in ECE254 lab3 keil_proc */   
+#include "rt_Task.h"       /* added in ECE254 lab keil_proc */ 
+#include "rt_MemBox_ext.h" /* added in ECE254 lab keil_proc */   
 
-/* ECE254 Lab3 Comment: You may need to include more header files */
+/* ECE254 Lab Comment: You may need to include more header files */
 
 /*----------------------------------------------------------------------------
  *      Global Variables
@@ -34,7 +34,7 @@
  *---------------------------------------------------------------------------*/
 
 /*==========================================================================*/
-/*  The following are added for ECE254 Lab3 Proc Management Assignmet       */
+/*  The following are added for ECE254 Lab Task Management Assignmet       */
 /*==========================================================================*/
 
 /*---------------- rt_alloc_box_s, task blocks when out of memory-----------*/

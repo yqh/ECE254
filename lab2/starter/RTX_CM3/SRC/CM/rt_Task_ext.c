@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------
- *      ECE254 Lab3
+ *      ECE254 Lab Task Management
  *----------------------------------------------------------------------------
  *      Name:    RT_TASK_ext.C
  *      Purpose: Interface functions for extended task management  
@@ -28,14 +28,14 @@
  *      Local Functions
  *---------------------------------------------------------------------------*/
 /*--------------------------- rt_tsk_count_get ------------------------------*/
-/* added in ECE254 lab2 keil_rtx */
+/* added in ECE254 lab keil_rtx */
 int rt_tsk_count_get (void) {
 	/* Add your own code here. Change the following line accordingly */
 	return 0;
 }
 
 /*--------------------------- rt_tsk_get ------------------------------------*/
-/* added in ECE254 lab3 keil_proc */
+/* added in ECE254 lab keil_proc */
 OS_RESULT rt_tsk_get (OS_TID task_id, RL_TASK_INFO *p_task_info) {
 	/* Add your own code here. Change the following lines accordingly */
 	p_task_info->task_id     = task_id;

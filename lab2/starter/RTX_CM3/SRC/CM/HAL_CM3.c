@@ -143,7 +143,7 @@ SVC_Restore
         CBZ     R3,SVC_Return
 	;/* Start: ECE254 Changes by Lab Staff*/
         ;LDRB    R0,[R2,#TCB_RETVAL]     ; Write os_tsk.new->ret_val
-        LDR     R0,[R2,#TCB_RETVAL]     ; ECE254 Lab3: Write os_tsk.new->ret_val, U32
+        LDR     R0,[R2,#TCB_RETVAL]     ; ECE254 Lab: Write os_tsk.new->ret_val, U32
 	;/* END: ECE254 Changes by Lab Staff*/
 
 SVC_Exit
@@ -209,7 +209,7 @@ Sys_Switch
         CBZ     R3,Sys_Exit
 	;/* Start: ECE254 Changes by Lab Staff*/
         ;LDRB    R3,[R2,#TCB_RETVAL]     ; Write os_tsk.new->ret_val
-        LDR    R3,[R2,#TCB_RETVAL]      ; ECE254 Lab3: Write os_tsk.new->ret_val, U32
+        LDR    R3,[R2,#TCB_RETVAL]      ; ECE254 Lab: Write os_tsk.new->ret_val, U32
 	;/* END: ECE254 Changes by Lab Staff*/
         STR     R3,[R12]
 Sys_Exit
