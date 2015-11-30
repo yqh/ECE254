@@ -1,5 +1,5 @@
 # ECE254 Makefile
-# 2015/10/20
+# 2015/11/30
 
 CC=gcc
 CFLAGS=-Wall -g
@@ -12,7 +12,7 @@ OBJS=cmd_arg.o
 all: cmd_arg.out
 
 cmd_arg.out: $(OBJS) 
-	$(LD) $(LDFLAGS) -o $@ $^
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<

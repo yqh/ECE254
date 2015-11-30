@@ -13,21 +13,19 @@ OBJS2=receiver.o point.o
 all: sender.out receiver.out
 
 sender.out: $(OBJS1) 
-	$(LD) $(LDFLAGS) -o $@ $(OBJS1) 
-
-sender.o: sender.c common.h point.h 
-	$(CC) $(CFLAGS) -c sender.c 
+	$(LD) -o $@ $(OBJS1) $(LDFLAGS) 
 
 receiver.out: $(OBJS2) 
-	$(LD) $(LDFLAGS) -o $@ $(OBJS2) 
+	$(LD) -o $@ $(OBJS2) $(LDFLAGS)
 
-receiver.o: receiver.c common.h point.h 
-	$(CC) $(CFLAGS) -c receiver.c 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< 
 
-point.o: point.c point.h 
-	$(CC) $(CFLAGS) -c point.c 
+%.d: %.c
+	$(CC) -MM -MF $@ $<
 
+-include $(SRCS:.c=.d)
 
 .PHONY: clean
 clean:
-	rm -f *.o *.out 
+	rm -f *.d *.o *.out 
