@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	q = worst_fit_alloc(8);		// allocate 8B
 	printf("q=%p\n", q);
 	if ( q != NULL ) {
-		best_fit_dealloc(q);	
+		worst_fit_dealloc(q);	
 	}
 	num = worst_fit_count_extfrag(4);
 

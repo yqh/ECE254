@@ -12,7 +12,7 @@ PROGRAM=time.out
 all: $(PROGRAM)
 
 time.out: time.o 
-	$(LD) $(LDFLAGS) -o $@ $< 
+	$(LD) -o $@ $<  $(LDFLAGS)
 
 time.o: time.c 
 	$(CC) $(CFLAGS) -c $< 

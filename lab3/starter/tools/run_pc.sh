@@ -1,11 +1,12 @@
 #!/bin/sh 
 ############################################################################
 # File Name  : run_pc.sh
-# Date       : 2015/09/13
+# Date       : 2015/11/30
 # Author     : Yiqing Huang 
 # Usage      : Name your producer executable as "produce" and put it in the
 #              same directory where you put this shell script.
 #              Type
+#	       chomod 700 ./run_pc.sh
 #              ./run_pc.sh 
 #             
 # Course Name: ECE254 Operating Systems and System Programming
