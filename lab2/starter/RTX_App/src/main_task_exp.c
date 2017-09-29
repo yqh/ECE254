@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NUM_FNAMES 4
+#define NUM_FNAMES 7
 
 struct func_info {
   void (*p)();      /* function pointer */
@@ -22,6 +22,9 @@ struct func_info {
 extern void os_idle_demon(void);
 __task void task1(void);
 __task void task2(void);
+__task void task3(void);
+__task void task4(void);
+__task void task5(void);
 __task void init (void);
  
 char *state2str(unsigned char state, char *str);
@@ -40,14 +43,45 @@ struct func_info g_task_map[NUM_FNAMES] = \
   {NULL,  "os_idle_demon"}, \
   {task1, "task1"},   \
   {task2, "task2"},   \
+{task3, "task3"},   \
+{task4, "task4"},   \
+{task5, "task5"},   \
   {init,  "init" }
 };
 
 /* no local variables defined, use one global var */
 __task void task1(void)
 {
-	for (;;) {
-		g_counter++;
+	
+	int num;
+	while (1) {
+		num = rt_tsk_count_get();
+		printf("number of tasks: %d.\n", num);
+		
+	}
+}
+
+__task void task3(void)
+{
+	
+	while (1) {
+		
+	}
+}
+
+__task void task4(void)
+{
+	
+	while (1) {
+		
+	}
+}
+
+__task void task5(void)
+{
+
+	while (1) {
+		
 	}
 }
 
@@ -66,7 +100,7 @@ __task void task2(void)
 	os_mut_release(g_mut_uart);
     
 	for(i = 0; i <3; i++) { // this is a lazy way of doing loop.
-		if (os_tsk_get(i+1, &task_info) == OS_R_OK) {
+		if (rt_tsk_get(i+1, &task_info) == OS_R_OK) {
 			os_mut_wait(g_mut_uart, 0xFFFF);  
 			printf("%d\t%s\t\t%d\t%s\t%d%%\n", \
 			       task_info.task_id, \
