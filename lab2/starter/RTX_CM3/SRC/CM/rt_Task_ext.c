@@ -46,26 +46,35 @@ int rt_tsk_count_get (void) {
 /*--------------------------- rt_tsk_get ------------------------------------*/
 /* added in ECE254 lab keil_proc */
 OS_RESULT rt_tsk_get (OS_TID task_id, RL_TASK_INFO *p_task_info) {
-	U16 size = os_stackinfo;
-	U16 stack_used;
-	U16 stack;
-	U16 tsk_stack;
+	P_TCB current_task;
+	U32 stack_size;
+	U32 stack_unused;
+	U32 stack_base;
+	U32 tsk_top;
+	U32 stack_percent;
+	
+	current_task = (P_TCB) (os_active_TCB[task_id-1]);
 	
 	p_task_info->task_id     = task_id;
-	p_task_info->state       = ((P_TCB) os_active_TCB[task_id-1])->state;
-	p_task_info->prio        = ((P_TCB) os_active_TCB[task_id-1])->prio;
-	p_task_info->ptask       = ((P_TCB) os_active_TCB[task_id-1])->ptask;
+	p_task_info->state       = current_task->state;
+	p_task_info->prio        = current_task->prio;
+	p_task_info->ptask       = current_task->ptask;
 	
-	stack = (U16) (((P_TCB) os_active_TCB[task_id-1])->stack);
 	
-	if(p_task_info->state == RUNNING){
-		tsk_stack = (U16)rt_get_PSP();
+	
+	stack_size = (U16) (os_stackinfo); /* 128*4 */
+	stack_base = (U32) (current_task->stack);
+	
+	if((p_task_info->state) == RUNNING){
+		
+		tsk_top = (U32) (rt_get_PSP());
 	}else{
-		tsk_stack = (U16) (((P_TCB) os_active_TCB[task_id-1])->tsk_stack);
+		tsk_top = (U32) (current_task->tsk_stack);
 	}
-	stack_used = (100*( size - (tsk_stack-stack ))) / size;
+	stack_unused = (tsk_top - stack_base);
+	stack_percent = (100*( stack_size - stack_unused)) / stack_size;
 	
-	p_task_info->stack_usage = (U8) stack_used;
+	p_task_info->stack_usage = (U8) stack_percent;
 	return OS_R_OK;
 }
 

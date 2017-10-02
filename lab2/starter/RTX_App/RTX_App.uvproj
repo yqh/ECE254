@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\RTX_CM3\INC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

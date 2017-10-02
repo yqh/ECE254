@@ -108,7 +108,6 @@ int uart_put_char(int n_uart, unsigned char c)
   }
 
   /* polling LSR THRE bit to wait it is empty */
-
   while (!(pUart->LSR & LSR_THRE)); 
   return (pUart->THR = c);  /* write c to the THR */
 }
