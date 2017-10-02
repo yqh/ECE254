@@ -53,7 +53,15 @@ OS_RESULT rt_tsk_get (OS_TID task_id, RL_TASK_INFO *p_task_info) {
 	U32 tsk_top;
 	U32 stack_percent;
 	
-	current_task = (P_TCB) (os_active_TCB[task_id-1]);
+	if(task_id == os_idle_TCB.task_id){
+		//If the task is the idle task, set current_task to idle TCB
+		current_task = &os_idle_TCB;
+	}else if(task_id > os_maxtaskrun || os_active_TCB[task_id-1] == NULL){
+		//Error, return not OK
+		return OS_R_NOK;
+	}else{
+		current_task = (P_TCB) (os_active_TCB[task_id-1]);
+	}
 	
 	p_task_info->task_id     = task_id;
 	p_task_info->state       = current_task->state;
