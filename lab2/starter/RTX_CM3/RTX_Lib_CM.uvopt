@@ -342,10 +342,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>43</TopLine>
-      <CurrentLine>71</CurrentLine>
+      <TopLine>28</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\SRC\CM\rt_Task_ext.c</PathWithFileName>
       <FilenameWithoutPath>rt_Task_ext.c</FilenameWithoutPath>
@@ -400,8 +400,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>146</TopLine>
-      <CurrentLine>157</CurrentLine>
+      <TopLine>232</TopLine>
+      <CurrentLine>120</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\SRC\CM\HAL_CM3.c</PathWithFileName>
       <FilenameWithoutPath>HAL_CM3.c</FilenameWithoutPath>
