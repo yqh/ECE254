@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NUM_FNAMES 7
+#define NUM_FNAMES 3
 
 struct func_info {
   void (*p)();      /* function pointer */
@@ -45,12 +45,13 @@ struct func_info g_task_map[NUM_FNAMES] = \
 {
   /* os_idle_demon function ptr to be initialized in main */
   {NULL,  "os_idle_demon"}, \
-  {task1, "task1"},   \
+  {task1, "task1"}/*,   \
   {task2, "task2"},   \
   {task3, "task3"},   \
   {task4, "task4"},   \
   {task5, "task5"},   \
   {init,  "init" }
+*/
 };
 
 
@@ -58,12 +59,12 @@ __task void task1(void)
 {
 	int i;
 	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("Task pointer: %d", (U32)test_ptr);
+	printf("Task pointer: %d\n", (U32)test_ptr);
 	os_mut_release(g_mut_uart);
 	
-	for(i = 0; i < 10; i++){
+	for(i = 0; i < 11; i++){
 		test_ptr = os_mem_alloc(testpool);
-		printf("Task pointer: %d", (U32)test_ptr);
+		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
 }
 
@@ -148,21 +149,7 @@ __task void task5(void)
 /*--------------------------- init ------------------------------------*/
 /* initialize system resources and create other tasks                  */
 /*---------------------------------------------------------------------*/
-__task void init(void)
-{
-	_init_box(testpool,sizeof(testpool),10);
-	
-	os_mut_init(&g_mut_uart);
-
-	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("init: TID = %d\n", os_tsk_self());
-	os_mut_release(g_mut_uart);
-  
-	g_tid = os_tsk_create(task1, 1);  /* task 1 at priority 1 */
-	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("init: created task1 with TID %d\n", g_tid);
-	os_mut_release(g_mut_uart);
-  
+__task void others(void){
 	g_tid = os_tsk_create(task2, 2);  /* task 2 at priority 1 */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task2 with TID %d\n", g_tid);
@@ -181,6 +168,24 @@ __task void init(void)
 	g_tid = os_tsk_create(task5, 1);  /* task 5 at priority 1 */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task5 with TID %d\n", g_tid);
+	os_mut_release(g_mut_uart);
+}
+
+
+__task void init(void)
+{
+	_init_box(testpool,sizeof(testpool),10);
+	
+	os_mut_init(&g_mut_uart);
+
+	os_mut_wait(g_mut_uart, 0xFFFF);
+	printf("init: TID = %d\n", os_tsk_self());
+	os_mut_release(g_mut_uart);
+  
+	
+	g_tid = os_tsk_create(task1, 1);  /* task 1 at priority 1 */
+	os_mut_wait(g_mut_uart, 0xFFFF);
+	printf("init: created task1 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
 	
 	os_tsk_delete_self();     /* task MUST delete itself before exiting */
