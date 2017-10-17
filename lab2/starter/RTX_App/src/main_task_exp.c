@@ -23,8 +23,6 @@ extern void os_idle_demon(void);
 __task void task1(void);
 __task void task2(void);
 __task void task3(void);
-__task void task4(void);
-__task void task5(void);
 __task void init (void);
  
 char *state2str(unsigned char state, char *str);
@@ -46,113 +44,50 @@ struct func_info g_task_map[NUM_FNAMES] = \
   /* os_idle_demon function ptr to be initialized in main */
   {NULL,  "os_idle_demon"}, \
   {task1, "task1"},   \
-  {task2, "task3"}/*,   \
-  {task3, "task3"},   \
-  {task4, "task4"},   \
-  {task5, "task5"},   \
-  {init,  "init" }
-*/
+  {task2, "task2"},   \
+  {task3, "task3"}
 };
 
 
+/*--------------------------- task1 -----------------------------------*/
+/* local counting loop																	               */
+/*---------------------------------------------------------------------*/
 __task void task1(void)
 {
 	int i;
-	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("Task pointer: %d\n", (U32)test_ptr);
-	os_mut_release(g_mut_uart);
 	
-	for(i = 0; i < 15; i++){
+	for(;;){
 		test_ptr = os_mem_alloc(testpool);
-		os_mut_wait(g_mut_uart, 0xFFFF);
-		printf("Task pointer %d: %d\n", i, (U32)test_ptr);
-		os_mut_release(g_mut_uart);
+		printf("Task 2 allocated memory\n");
+		
+		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
-	
-	while(1);
 }
 
-
-
 /*--------------------------- task2 -----------------------------------*/
+/* loop	over the os_tsk_count_get call					                       */
+/*---------------------------------------------------------------------*/
+__task void task2(void)
+{
+	int i;
+	
+	for(i = 0; i < 12; i++){
+		test_ptr = os_mem_alloc(testpool);
+		printf("Task 4 allocated memory\n");
+		printf("Task pointer: %d\n", (U32)test_ptr);
+	}
+}
+
+/*--------------------------- task3 -----------------------------------*/
 /* checking states of all tasks in the system                          */
 /*---------------------------------------------------------------------*/
 __task void task3(void)
 {
-	int i = 0;
-	
-	for(i = 0; i < 10; i++){
-		os_mut_wait(g_mut_uart, 0xFFFF);
+	for(;;){
 		printf("Memory free\n");
-		os_mut_release(g_mut_uart);
+		
 		os_mem_free(testpool,test_ptr);
 	}
-	
-	while(1);
-}
-
-/*--------------------------- task3 -----------------------------------*/
-/* local counting loop																	                     */
-/*---------------------------------------------------------------------*/
-__task void task2(void)
-{
-	U8 i=1;
-	RL_TASK_INFO task_info;
-	
-  
-	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("TID\tNAME\t\tPRIO\tSTATE   \t%%STACK\n");
-	os_mut_release(g_mut_uart);
-    
-	for(i = 0; i <4; i++) { // this is a lazy way of doing loop.
-		if (os_tsk_get(i+1, &task_info) == OS_R_OK) {
-			os_mut_wait(g_mut_uart, 0xFFFF);  
-			printf("%d\t%s\t\t%d\t%s\t%d%%\n", \
-			       task_info.task_id, \
-			       fp2name(task_info.ptask, g_tsk_name), \
-			       task_info.prio, \
-			       state2str(task_info.state, g_str),  \
-			       task_info.stack_usage);
-			os_mut_release(g_mut_uart);
-		} 
-	}
-    
-	if (os_tsk_get(0xFF, &task_info) == OS_R_OK) {
-		os_mut_wait(g_mut_uart, 0xFFFF);  
-		printf("%d\t%s\t\t%d\t%s\t%d%%\n", \
-		       task_info.task_id, \
-		       fp2name(task_info.ptask, g_tsk_name), \
-		       task_info.prio, \
-		       state2str(task_info.state, g_str),  \
-		       task_info.stack_usage);
-		os_mut_release(g_mut_uart);
-	} 
-    
-	for(;;);
-}
-
-/*--------------------------- task4 -----------------------------------*/
-/* loop	over the os_tsk_count_get call					                       */
-/*---------------------------------------------------------------------*/
-__task void task4(void)
-{
-	U8 active_tasks;
-	
-	for(;;){
-		active_tasks = os_tsk_count_get();
-	}
-}
-
-/*--------------------------- task5 -----------------------------------*/
-/* checking number of active tasks in the system                       */
-/*---------------------------------------------------------------------*/
-__task void task5(void)
-{
-	U8 active_tasks = os_tsk_count_get();
-	
-	printf("Number of active tasks: %d", active_tasks);
-	
-	for(;;);
 }
 
 /*--------------------------- init ------------------------------------*/
@@ -167,14 +102,18 @@ __task void init(void)
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: TID = %d\n", os_tsk_self());
 	os_mut_release(g_mut_uart);
-  
 	
-	g_tid = os_tsk_create(task1, 2);  /* task 1 at priority 1 */
+	g_tid = os_tsk_create(task1, 3);  /* task 2 at priority 2 */
 	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("init: created task1 with TID %d\n", g_tid);
+	printf("init: created task4 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
 	
-	g_tid = os_tsk_create(task3, 2);  /* task 3 at priority 1 */
+	g_tid = os_tsk_create(task2, 3);  /* task 2 at priority 2 */
+	os_mut_wait(g_mut_uart, 0xFFFF);
+	printf("init: created task2 with TID %d\n", g_tid);
+	os_mut_release(g_mut_uart);
+	
+	g_tid = os_tsk_create(task3, 1);  /* task 3 at priority 2 */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task3 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
