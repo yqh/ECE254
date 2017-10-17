@@ -50,7 +50,7 @@ struct func_info g_task_map[NUM_FNAMES] = \
 
 
 /*--------------------------- task1 -----------------------------------*/
-/* local counting loop																	               */
+/* a task that continually requests memory							               */
 /*---------------------------------------------------------------------*/
 __task void task1(void)
 {
@@ -65,7 +65,7 @@ __task void task1(void)
 }
 
 /*--------------------------- task2 -----------------------------------*/
-/* loop	over the os_tsk_count_get call					                       */
+/* a task that continually requests memory							               */
 /*---------------------------------------------------------------------*/
 __task void task2(void)
 {
@@ -74,6 +74,7 @@ __task void task2(void)
 	for(i = 0; i < 12; i++){
 		test_ptr = os_mem_alloc(testpool);
 		printf("Task 4 allocated memory\n");
+		
 		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
 }
@@ -91,7 +92,7 @@ __task void task3(void)
 }
 
 /*--------------------------- init ------------------------------------*/
-/* initialize system resources and create other tasks                  */
+/* a task that continually frees memory								                 */
 /*---------------------------------------------------------------------*/
 __task void init(void)
 {
@@ -103,17 +104,17 @@ __task void init(void)
 	printf("init: TID = %d\n", os_tsk_self());
 	os_mut_release(g_mut_uart);
 	
-	g_tid = os_tsk_create(task1, 3);  /* task 2 at priority 2 */
+	g_tid = os_tsk_create(task1, 3);  /* task 1 at priority 3 (requests memory) */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task4 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
 	
-	g_tid = os_tsk_create(task2, 3);  /* task 2 at priority 2 */
+	g_tid = os_tsk_create(task2, 3);  /* task 2 at priority 3 (requests memory) */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task2 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
 	
-	g_tid = os_tsk_create(task3, 1);  /* task 3 at priority 2 */
+	g_tid = os_tsk_create(task3, 1);  /* task 3 at priority 1 (frees memory) */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task3 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
