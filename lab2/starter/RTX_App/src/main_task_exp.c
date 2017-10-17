@@ -54,11 +54,9 @@ struct func_info g_task_map[NUM_FNAMES] = \
 /*---------------------------------------------------------------------*/
 __task void task1(void)
 {
-	int i;
-	
 	for(;;){
 		test_ptr = os_mem_alloc(testpool);
-		printf("Task 2 allocated memory\n");
+		printf("Task 1 allocated memory\n");
 		
 		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
@@ -69,11 +67,10 @@ __task void task1(void)
 /*---------------------------------------------------------------------*/
 __task void task2(void)
 {
-	int i;
-	
-	for(i = 0; i < 12; i++){
+	for(;;){
 		test_ptr = os_mem_alloc(testpool);
-		printf("Task 4 allocated memory\n");
+		
+		printf("Task 2 allocated memory\n");
 		
 		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
