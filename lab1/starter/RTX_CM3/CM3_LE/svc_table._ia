@@ -1,0 +1,4 @@
+--cpu Cortex-M3 -g --16 --apcs=interwork 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-o ".\CM3_LE\SVC_Table.o" --depend ".\CM3_LE\SVC_Table.d" "SRC\CM\SVC_Table.s"

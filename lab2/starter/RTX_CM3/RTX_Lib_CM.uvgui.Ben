@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ProjectGui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_gui.xsd">
+
+  <SchemaVersion>-3.1</SchemaVersion>
+
+  <Header>### uVision Project, (C) Keil Software</Header>
+
+  <ViewPool/>
+
+  <SECTreeCtrl>
+    <View>
+      <WinId>38003</WinId>
+      <ViewName>Registers</ViewName>
+      <TableColWidths>52 100</TableColWidths>
+    </View>
+    <View>
+      <WinId>346</WinId>
+      <ViewName>Code Coverage</ViewName>
+      <TableColWidths>490 870</TableColWidths>
+    </View>
+    <View>
+      <WinId>204</WinId>
+      <ViewName>Performance Analyzer</ViewName>
+      <TableColWidths>972 144 144 100</TableColWidths>
+    </View>
+  </SECTreeCtrl>
+
+  <TreeListPane>
+    <View>
+      <WinId>1506</WinId>
+      <ViewName>Symbols</ViewName>
+      <UserString></UserString>
+      <TableColWidths>133 133 133</TableColWidths>
+    </View>
+    <View>
+      <WinId>1936</WinId>
+      <ViewName>Watch 1</ViewName>
+      <UserString></UserString>
+      <TableColWidths>133 133 133</TableColWidths>
+    </View>
+    <View>
+      <WinId>1937</WinId>
+      <ViewName>Watch 2</ViewName>
+      <UserString></UserString>
+      <TableColWidths>133 133 133</TableColWidths>
+    </View>
+    <View>
+      <WinId>1935</WinId>
+      <ViewName>Call Stack + Locals</ViewName>
+      <UserString></UserString>
+      <TableColWidths>133 133 133</TableColWidths>
+    </View>
+    <View>
+      <WinId>2506</WinId>
+      <ViewName>Trace Data</ViewName>
+      <UserString></UserString>
+      <TableColWidths>75 135 95 70 230 200</TableColWidths>
+    </View>
+  </TreeListPane>
+
+  <WindowSettings>
+    <LogicAnalizer>
+      <ShowLACursor>0</ShowLACursor>
+      <ShowSignalInfo>0</ShowSignalInfo>
+      <ShowCycles>0</ShowCycles>
+    </LogicAnalizer>
+  </WindowSettings>
+
+  <WinLayoutEx>
+    <sActiveDebugView></sActiveDebugView>
+    <WindowPosition>
+      <length>44</length>
+      <flags>2</flags>
+      <showCmd>3</showCmd>
+      <MinPosition>
+        <xPos>-1</xPos>
+        <yPos>-1</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>-1</xPos>
+        <yPos>-1</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>126</Top>
+        <Left>130</Left>
+        <Right>1282</Right>
+        <Bottom>719</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+    <MDIClientArea>
+      <RegID>0</RegID>
+      <MDITabState>
+        <Len>750</Len>
+        <Data>01000000040000000100000001000000010000000100000000000000020000000000000001000000010000000000000028000000280000000100000004000000010000000100000071433A5C55736572735C42656E5C446F63756D656E74735C323031375F46616C6C5C4543452D3235345C776F726B73706163655C6C6162735F7374657068656E5C4543453235345C6C6162325C737461727465725C5254585F4170705C7372635C737461727475705F4C5043313778782E730000000011737461727475705F4C5043313778782E7300000000F0A0A100FFFFFFFF6F433A5C55736572735C42656E5C446F63756D656E74735C323031375F46616C6C5C4543452D3235345C776F726B73706163655C6C6162735F7374657068656E5C4543453235345C6C6162325C737461727465725C5254585F4170705C7372635C6D61696E5F7461736B5F6578702E63000000000F6D61696E5F7461736B5F6578702E6300000000D9ADC200FFFFFFFF72433A5C55736572735C42656E5C446F63756D656E74735C323031375F46616C6C5C4543452D3235345C776F726B73706163655C6C6162735F7374657068656E5C4543453235345C6C6162325C737461727465725C5254585F434D335C5352435C434D5C72745F4D656D426F785F6578742E63000000000F72745F4D656D426F785F6578742E6300000000BECEA100FFFFFFFF6E433A5C55736572735C42656E5C446F63756D656E74735C323031375F46616C6C5C4543452D3235345C776F726B73706163655C6C6162735F7374657068656E5C4543453235345C6C6162325C737461727465725C5254585F434D335C5352435C434D5C72745F4D656D426F782E63000000000B72745F4D656D426F782E6300000000F0A0A100FFFFFFFF0100000010000000C5D4F200FFDC7800BECEA100F0A0A100BCA8E1009CC1B600F7B88600D9ADC200A5C2D700B3A6BE00EAD6A300F6FA7D00B5E99D005FC3CF00C1838300CACAD500010000000000000002000000C800000066000000000600006B020000</Data>
+      </MDITabState>
+    </MDIClientArea>
+  </WinLayoutEx>
+
+  <AlienFiles/>
+
+</ProjectGui>

@@ -80,7 +80,7 @@
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -411,6 +411,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\uart_polling.c</FilePath>
             </File>
+            <File>
+              <FileName>Retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Retarget.c</FilePath>
+            </File>
+            <File>
+              <FileName>RTX_Conf_CM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\RTX_Conf_CM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -420,6 +430,16 @@
               <FileName>helloworld.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\helloworld.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RTX Lib</GroupName>
+          <Files>
+            <File>
+              <FileName>RTX_CM3.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\RTX_CM3\CM3_LE\RTX_CM3.lib</FilePath>
             </File>
           </Files>
         </Group>
@@ -499,7 +519,7 @@
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -830,6 +850,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\uart_polling.c</FilePath>
             </File>
+            <File>
+              <FileName>Retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Retarget.c</FilePath>
+            </File>
+            <File>
+              <FileName>RTX_Conf_CM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\RTX_Conf_CM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -839,6 +869,16 @@
               <FileName>helloworld.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\helloworld.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>RTX Lib</GroupName>
+          <Files>
+            <File>
+              <FileName>RTX_CM3.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\RTX_CM3\CM3_LE\RTX_CM3.lib</FilePath>
             </File>
           </Files>
         </Group>

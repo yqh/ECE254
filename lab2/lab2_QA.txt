@@ -1,0 +1,18 @@
+1. #_declare_box(mympool, 12, 20)
+   #_init_box(mympool, sizeof(mympool), 20)
+   rt_alloc_box()
+   rt_free_box()
+
+2. ret_val holds the return value after a the task has completed a wait. This allows the program to query the status and result of the task's wait.
+
+3. rt_put_prio() takes a task and places it in a queue, based on highest priority first. The function references the task's 'prio' value to determine priority. This function also takes the pointer to the head of the queue as a parameter.
+
+   rt_get_first() takes a pointer to the head of a queue as a parameter. The function returns the first task in the queue.
+
+4. rt_block() blocks the running task by taking setting the state to the appropriate blocked state (given to the functino as a parameter) and switches the running task to the next applicable task by referencing rt_get_first(). Optionally, rt_block() takes a timeout value to set before the task getting blocked will run again.
+
+   rt_dispatch() dispatches the task identified in the function call, or the task with the highest priority if none isidentified.
+
+5. OS_R_MBX is only set when the task is blocked and resumed. Context switching happens in the HAL, which takes place in assembly rather than the kernel's C code. The sender sets the value of OS_R_MBX when the reciever is blocked and resumed. Because the context switching is in the HAL, this means that the rt_mbx_wait() function, in the kernel code, does not set the OS_R_MBX value.
+
+6. Both os_rdy and os_dly are of the type OS_XCB, which contains forward and backward pointers to a ready/semaphore wait list and a delay list

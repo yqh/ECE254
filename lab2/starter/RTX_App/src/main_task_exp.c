@@ -22,6 +22,7 @@ struct func_info {
 extern void os_idle_demon(void);
 __task void task1(void);
 __task void task2(void);
+__task void task3(void);
 __task void init (void);
  
 char *state2str(unsigned char state, char *str);
@@ -34,85 +35,87 @@ int  g_counter = 0;  // a global counter
 char g_str[16];
 char g_tsk_name[16];
 
+void* test_ptr;
+_declare_box(testpool,12,10);
+
+
 struct func_info g_task_map[NUM_FNAMES] = \
 {
   /* os_idle_demon function ptr to be initialized in main */
   {NULL,  "os_idle_demon"}, \
   {task1, "task1"},   \
   {task2, "task2"},   \
-  {init,  "init" }
+  {task3, "task3"}
 };
 
-/* no local variables defined, use one global var */
+
+/*--------------------------- task1 -----------------------------------*/
+/* a task that continually requests memory							               */
+/*---------------------------------------------------------------------*/
 __task void task1(void)
 {
-	for (;;) {
-		g_counter++;
+	for(;;){
+		test_ptr = os_mem_alloc(testpool);
+		printf("Task 1 allocated memory\n");
+		
+		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
 }
 
-
 /*--------------------------- task2 -----------------------------------*/
-/* checking states of all tasks in the system                          */
+/* a task that continually requests memory							               */
 /*---------------------------------------------------------------------*/
 __task void task2(void)
 {
-	U8 i=1;
-	RL_TASK_INFO task_info;
-	
-  
-	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("TID\tNAME\t\tPRIO\tSTATE   \t%%STACK\n");
-	os_mut_release(g_mut_uart);
-    
-	for(i = 0; i <3; i++) { // this is a lazy way of doing loop.
-		if (os_tsk_get(i+1, &task_info) == OS_R_OK) {
-			os_mut_wait(g_mut_uart, 0xFFFF);  
-			printf("%d\t%s\t\t%d\t%s\t%d%%\n", \
-			       task_info.task_id, \
-			       fp2name(task_info.ptask, g_tsk_name), \
-			       task_info.prio, \
-			       state2str(task_info.state, g_str),  \
-			       task_info.stack_usage);
-			os_mut_release(g_mut_uart);
-		} 
+	for(;;){
+		test_ptr = os_mem_alloc(testpool);
+		
+		printf("Task 2 allocated memory\n");
+		
+		printf("Task pointer: %d\n", (U32)test_ptr);
 	}
-    
-	if (os_tsk_get(0xFF, &task_info) == OS_R_OK) {
-		os_mut_wait(g_mut_uart, 0xFFFF);  
-		printf("%d\t%s\t\t%d\t%s\t%d%%\n", \
-		       task_info.task_id, \
-		       fp2name(task_info.ptask, g_tsk_name), \
-		       task_info.prio, \
-		       state2str(task_info.state, g_str),  \
-		       task_info.stack_usage);
-		os_mut_release(g_mut_uart);
-	} 
-    
-	for(;;);
+}
+
+/*--------------------------- task3 -----------------------------------*/
+/* checking states of all tasks in the system                          */
+/*---------------------------------------------------------------------*/
+__task void task3(void)
+{
+	for(;;){
+		printf("Memory free\n");
+		
+		os_mem_free(testpool,test_ptr);
+	}
 }
 
 /*--------------------------- init ------------------------------------*/
-/* initialize system resources and create other tasks                  */
+/* a task that continually frees memory								                 */
 /*---------------------------------------------------------------------*/
 __task void init(void)
 {
+	_init_box(testpool,sizeof(testpool),10);
+	
 	os_mut_init(&g_mut_uart);
-  
+
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: TID = %d\n", os_tsk_self());
 	os_mut_release(g_mut_uart);
-  
-	g_tid = os_tsk_create(task1, 1);  /* task 1 at priority 1 */
+	
+	g_tid = os_tsk_create(task1, 3);  /* task 1 at priority 3 (requests memory) */
 	os_mut_wait(g_mut_uart, 0xFFFF);
-	printf("init: created task1 with TID %d\n", g_tid);
+	printf("init: created task4 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
-  
-	g_tid = os_tsk_create(task2, 1);  /* task 2 at priority 1 */
+	
+	g_tid = os_tsk_create(task2, 3);  /* task 2 at priority 3 (requests memory) */
 	os_mut_wait(g_mut_uart, 0xFFFF);
 	printf("init: created task2 with TID %d\n", g_tid);
 	os_mut_release(g_mut_uart);
-  
+	
+	g_tid = os_tsk_create(task3, 1);  /* task 3 at priority 1 (frees memory) */
+	os_mut_wait(g_mut_uart, 0xFFFF);
+	printf("init: created task3 with TID %d\n", g_tid);
+	os_mut_release(g_mut_uart);
+	
 	os_tsk_delete_self();     /* task MUST delete itself before exiting */
 }
 
@@ -155,6 +158,9 @@ char *state2str(unsigned char state, char *str)
 		break;
 	case WAIT_MUT:
 		strcpy(str, "WAIT_MUT");
+		break;
+	case WAIT_MEM:
+		strcpy(str, "WAIT_MEM");
 		break;
 	default:
 		strcpy(str, "UNKNOWN");    

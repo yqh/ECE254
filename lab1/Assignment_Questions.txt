@@ -1,0 +1,14 @@
+1. os_maxtaskrun
+2. An array of active tasks indexed by TID. It contains P_TCB structs that hold the specific task information 
+3. os_idle_TCB
+4. Yes
+5. n-1
+6a. It points to the next TCB that should be run after completion
+6b. tsk_stack is the pointer to the top of the stack when the task was most recently run. stack points at the base of the memory stack
+6c. No. Since OS_XCB has 8 bit its before p_lnk, and OS_TCB has 32 bits before p_lnk, the p_lnk variable will not be kept when casting OS_XCB to OS_TCB
+7. mp_tcb is a block of memory for the TCBs. mp_stk is the block of memory allocated for the system stack.
+8a. The program status register and the program counter are saved to the stack.
+8b. bits 0-15 of os_stackinfo
+8c. The stack pointer in the OS_TCB struct
+8d. Using the tsk_stack pointer in the OS_TCB struct
+8e. Using rt_get_PSP()

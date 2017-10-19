@@ -1,0 +1,15 @@
+Task 1
+This task continually requests memory and prints the current value of the test pointer in memory. This is the highest priority testing task. The task will become blocked when no more memory can be allocated in the memory pool. This task begins running first.
+
+Task 2
+This task is identical to task 1 with the same priority. This task is initiated after task 1.
+
+Task 3
+This task continually frees memory from the memory pool. This task is initiated at a lower priority than the memory allocation tasks.
+
+
+Test Explanation
+
+At the start of the program, Task 1 will run first and become blocked when there is no more space in the memory pool. Task 2 will then begin to run, but also become blocked when it tries to allocate memory from the same memory pool as Task 1. This makes the situation where Task 1 and Task 2 are both blocked at the same priority.
+
+Test 3 is then able to run, as both tasks with a higher priority are blocked. Once Test 3 unblocks one block of memory, Task 1 becomes unblocked as the highest priority task that was blocked for the longest. After Test 1 allocates another block of memory, it becomes blocked again, causing Task 3 to run and free some memory. This time, Task 2 has been blocked for the longest and is allowed to allocate memory from the memory pool. From this point on Task 1 and Task 2 will take turns being allocated memory from the memory pool as they become blocked and the memory is freed.
